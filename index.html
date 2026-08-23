@@ -10,124 +10,135 @@
 <title>Mijn Energie Kosten</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing:border-box; }
 
 body {
-    margin: 0;
-    padding: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #f2f2f7;
-    color: #1d1d1f;
+    margin:0;
+    padding:16px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f2f2f7;
+    color:#1d1d1f;
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
+    max-width:620px;
+    margin:auto;
 }
 
 h1 {
-    font-size: 28px;
-    margin: 8px 0 20px;
+    font-size:28px;
+    margin:8px 0 20px;
 }
 
 h2 {
-    font-size: 20px;
-    margin: 0 0 15px;
+    font-size:20px;
+    margin:0 0 15px;
 }
 
-.section,
-.result {
-    background: white;
-    border-radius: 18px;
-    padding: 18px;
-    margin-bottom: 16px;
+.section {
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
 }
 
 label {
-    display: block;
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: 500;
+    display:block;
+    margin-top:14px;
+    font-size:16px;
+    font-weight:500;
 }
 
 input {
-    width: 100%;
-    margin-top: 6px;
-    padding: 13px;
-    font-size: 18px;
-    border: 1px solid #d2d2d7;
-    border-radius: 12px;
-    background: white;
+    width:100%;
+    margin-top:6px;
+    padding:13px;
+    font-size:18px;
+    border:1px solid #d2d2d7;
+    border-radius:12px;
+    background:white;
 }
 
 .unit {
-    color: #777;
-    font-size: 13px;
-    margin-top: 4px;
+    color:#777;
+    font-size:13px;
+    margin-top:4px;
 }
 
 .results {
-    display: grid;
-    gap: 12px;
+    display:grid;
+    gap:12px;
+}
+
+.result {
+    background:white;
+    border-radius:18px;
+    padding:18px;
 }
 
 .result-title {
-    font-size: 15px;
-    color: #666;
+    color:#666;
+    font-size:15px;
 }
 
 .result-value {
-    font-size: 29px;
-    font-weight: 700;
-    margin-top: 5px;
+    font-size:29px;
+    font-weight:700;
+    margin-top:5px;
 }
 
 .month {
-    margin-top: 5px;
-    color: #666;
+    color:#666;
+    margin-top:5px;
 }
 
 .total {
-    background: #1d1d1f;
-    color: white;
+    background:#1d1d1f;
+    color:white;
 }
 
 .total .result-title,
 .total .month {
-    color: #ccc;
+    color:#ccc;
 }
 
 .detail {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
 }
 
 .detail:last-child {
-    border-bottom: none;
+    border-bottom:none;
 }
 
 button {
-    width: 100%;
-    padding: 15px;
-    font-size: 17px;
-    border: none;
-    border-radius: 14px;
-    background: #007aff;
-    color: white;
-    font-weight: 600;
-    margin-top: 2px;
+    width:100%;
+    padding:15px;
+    font-size:17px;
+    border:none;
+    border-radius:14px;
+    background:#007aff;
+    color:white;
+    font-weight:600;
+    margin-top:2px;
 }
 
 .small {
-    color: #777;
-    font-size: 13px;
-    margin-top: 12px;
-    line-height: 1.4;
+    color:#777;
+    font-size:13px;
+    margin-top:12px;
+    line-height:1.4;
+}
+
+.note {
+    background:#eef5ff;
+    border-radius:14px;
+    padding:12px;
+    font-size:14px;
+    margin-bottom:16px;
 }
 </style>
 </head>
@@ -138,50 +149,30 @@ button {
 
 <h1>⚡ Mijn Energie Kosten</h1>
 
+<div class="note">
+    Audax contractberekening – bedragen worden automatisch berekend.
+</div>
+
 <div class="section">
 
-<h2>Elektriciteit</h2>
+<h2>⚡ Energieverbruik</h2>
 
 <label>
-Verbruik stroom
-<input id="stroomVerbruik" type="text" inputmode="decimal" value="3575">
+Stroomverbruik
+<input id="verbruik" type="text" inputmode="decimal" value="42500">
 <div class="unit">kWh per jaar</div>
 </label>
 
 <label>
 Opwek zonnepanelen
-<input id="zonneOpwek" type="text" inputmode="decimal" value="5580">
+<input id="opwek" type="text" inputmode="decimal" value="15000">
 <div class="unit">kWh per jaar</div>
 </label>
 
 <label>
 Eigen gebruik zonnepanelen
-<input id="zonneEigen" type="text" inputmode="decimal" value="1189">
+<input id="eigenGebruik" type="text" inputmode="decimal" value="9000">
 <div class="unit">kWh per jaar</div>
-</label>
-
-<label>
-Stroomtarief
-<input id="stroomTarief" type="text" inputmode="decimal" value="0,30">
-<div class="unit">€ per kWh</div>
-</label>
-
-<label>
-Terugleververgoeding
-<input id="terugLeverVergoeding" type="text" inputmode="decimal" value="0,10">
-<div class="unit">€ per kWh</div>
-</label>
-
-<label>
-Terugleverkosten
-<input id="terugLeverKosten" type="text" inputmode="decimal" value="0,15">
-<div class="unit">€ per kWh</div>
-</label>
-
-<label>
-Energiebelasting stroom
-<input id="energieBelastingStroom" type="text" inputmode="decimal" value="0,11">
-<div class="unit">€ per kWh</div>
 </label>
 
 </div>
@@ -189,30 +180,67 @@ Energiebelasting stroom
 
 <div class="section">
 
-<h2>Gas</h2>
+<h2>💶 Contract</h2>
 
 <label>
-Gasverbruik
-<input id="gasVerbruik" type="text" inputmode="decimal" value="0">
-<div class="unit">m³ per jaar</div>
+Importtarief
+<input id="importTarief" type="text" inputmode="decimal" value="0,1625">
+<div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
-Gastarief
-<input id="gasTarief" type="text" inputmode="decimal" value="1,20">
-<div class="unit">€ per m³</div>
+Terugleververgoeding
+<input id="terugleverTarief" type="text" inputmode="decimal" value="0,08125">
+<div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
-Vastrecht gas
-<input id="gasVastrecht" type="text" inputmode="decimal" value="0,50">
-<div class="unit">€ per dag</div>
+Terugleverkosten
+<input id="terugleverKosten" type="text" inputmode="decimal" value="0,0778">
+<div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
-Energiebelasting gas
-<input id="energieBelastingGas" type="text" inputmode="decimal" value="0,60">
-<div class="unit">€ per m³</div>
+BTW
+<input id="btw" type="text" inputmode="decimal" value="21">
+<div class="unit">percentage</div>
+</label>
+
+</div>
+
+
+<div class="section">
+
+<h2>📋 Vaste kosten en belastingen</h2>
+
+<label>
+Vastrecht
+<input id="vastrecht" type="text" inputmode="decimal" value="0,26138">
+<div class="unit">€ per dag – excl. BTW</div>
+</label>
+
+<label>
+Heffingskorting
+<input id="heffingskorting" type="text" inputmode="decimal" value="-1,42411">
+<div class="unit">€ per dag – excl. BTW</div>
+</label>
+
+<label>
+Energiebelasting t/m 10.000 kWh
+<input id="eb1" type="text" inputmode="decimal" value="0,09161">
+<div class="unit">€ per kWh – excl. BTW</div>
+</label>
+
+<label>
+Energiebelasting 10.001 t/m 50.000 kWh
+<input id="eb2" type="text" inputmode="decimal" value="0,06671">
+<div class="unit">€ per kWh – excl. BTW</div>
+</label>
+
+<label>
+Transportkosten
+<input id="transport" type="text" inputmode="decimal" value="8,4831">
+<div class="unit">€ per dag – excl. BTW</div>
 </label>
 
 </div>
@@ -221,21 +249,35 @@ Energiebelasting gas
 <div class="results">
 
 <div class="result">
-<div class="result-title">Elektriciteit per jaar</div>
-<div class="result-value" id="resultStroom">€ 0</div>
-<div class="month" id="resultStroomMaand">€ 0 per maand</div>
+<div class="result-title">Afname van het net</div>
+<div class="result-value" id="importKwh">0 kWh</div>
 </div>
 
 <div class="result">
-<div class="result-title">Gas per jaar</div>
-<div class="result-value" id="resultGas">€ 0</div>
-<div class="month" id="resultGasMaand">€ 0 per maand</div>
+<div class="result-title">Teruglevering</div>
+<div class="result-value" id="exportKwh">0 kWh</div>
+</div>
+
+<div class="result">
+<div class="result-title">Contractkosten per jaar incl. BTW</div>
+<div class="result-value" id="contractKosten">€ 0</div>
+<div class="month" id="contractMaand">€ 0 per maand</div>
+</div>
+
+<div class="result">
+<div class="result-title">Terugleververgoeding incl. BTW</div>
+<div class="result-value" id="vergoeding">€ 0</div>
+</div>
+
+<div class="result">
+<div class="result-title">Terugleverkosten incl. BTW</div>
+<div class="result-value" id="leverKosten">€ 0</div>
 </div>
 
 <div class="result total">
-<div class="result-title">Totale energiekosten</div>
-<div class="result-value" id="resultTotaal">€ 0</div>
-<div class="month" id="resultTotaalMaand">€ 0 per maand</div>
+<div class="result-title">NETTO ENERGIEKOSTEN</div>
+<div class="result-value" id="totaal">€ 0</div>
+<div class="month" id="totaalMaand">€ 0 per maand</div>
 </div>
 
 </div>
@@ -243,36 +285,36 @@ Energiebelasting gas
 
 <div class="section">
 
-<h2>Uitsplitsing stroom</h2>
+<h2>📊 Uitsplitsing contractkosten</h2>
 
 <div class="detail">
-<span>Afname van net</span>
-<strong id="afname">0 kWh</strong>
-</div>
-
-<div class="detail">
-<span>Teruglevering</span>
-<strong id="teruglevering">0 kWh</strong>
-</div>
-
-<div class="detail">
-<span>Stroomkosten</span>
+<span>Stroomlevering</span>
 <strong id="stroomKosten">€ 0</strong>
 </div>
 
 <div class="detail">
+<span>Vastrecht</span>
+<strong id="vastrechtResult">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Heffingskorting</span>
+<strong id="heffingResult">€ 0</strong>
+</div>
+
+<div class="detail">
 <span>Energiebelasting</span>
-<strong id="stroomBelasting">€ 0</strong>
+<strong id="belastingResult">€ 0</strong>
 </div>
 
 <div class="detail">
-<span>Terugleververgoeding</span>
-<strong id="vergoeding">€ 0</strong>
+<span>Transportkosten</span>
+<strong id="transportResult">€ 0</strong>
 </div>
 
 <div class="detail">
-<span>Terugleverkosten</span>
-<strong id="leverKosten">€ 0</strong>
+<span>BTW</span>
+<strong id="btwResult">€ 0</strong>
 </div>
 
 </div>
@@ -280,30 +322,35 @@ Energiebelasting gas
 
 <div class="section">
 
-<h2>Uitsplitsing gas</h2>
+<h2>☀️ Zonnepanelen</h2>
 
 <div class="detail">
-<span>Gaslevering</span>
-<strong id="gasLevering">€ 0</strong>
-</div>
-
-<div class="detail">
-<span>Energiebelasting</span>
-<strong id="gasBelasting">€ 0</strong>
+<span>Totale opwek</span>
+<strong id="opwekResult">0 kWh</strong>
 </div>
 
 <div class="detail">
-<span>Vastrecht</span>
-<strong id="gasVasteKosten">€ 0</strong>
+<span>Eigen gebruik</span>
+<strong id="eigenResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Teruglevering</span>
+<strong id="terugResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Percentage eigen gebruik</span>
+<strong id="percentageEigen">0%</strong>
 </div>
 
 </div>
 
 
-<button id="resetButton">Invoer terugzetten</button>
+<button id="reset">Invoer terugzetten</button>
 
 <div class="small">
-De berekening gebeurt volledig op het apparaat.
+Alle bedragen uit de contractberekening zijn exclusief BTW ingevoerd en worden daarna met het opgegeven BTW-percentage omgerekend.
 </div>
 
 </div>
@@ -324,151 +371,225 @@ function get(id) {
 function euro(value) {
 
     return new Intl.NumberFormat("nl-NL", {
-        style: "currency",
-        currency: "EUR"
+        style:"currency",
+        currency:"EUR"
     }).format(value);
 }
 
 
-function number(value) {
+function num(value) {
 
     return new Intl.NumberFormat("nl-NL", {
-        maximumFractionDigits: 0
+        maximumFractionDigits:0
     }).format(value);
 }
 
 
 function calculate() {
 
-    const verbruik = get("stroomVerbruik");
-    const opwek = get("zonneOpwek");
+    const verbruik = get("verbruik");
+    const opwek = get("opwek");
 
-    const eigen = Math.min(
-        get("zonneEigen"),
-        verbruik,
-        opwek
-    );
-
-    const afname = Math.max(
-        0,
-        verbruik - eigen
+    const eigenGebruik = Math.min(
+        get("eigenGebruik"),
+        opwek,
+        verbruik
     );
 
     const teruglevering = Math.max(
         0,
-        opwek - eigen
+        opwek - eigenGebruik
+    );
+
+    const importKwh = Math.max(
+        0,
+        verbruik - eigenGebruik
     );
 
 
+    /*
+       AUDAX MODEL
+    */
+
+    const btwPercentage = get("btw") / 100;
+    const btwFactor = 1 + btwPercentage;
+
+
+    /* stroom */
+
     const stroomKosten =
-        afname * get("stroomTarief");
-
-    const stroomBelasting =
-        afname * get("energieBelastingStroom");
-
-    const vergoeding =
-        teruglevering * get("terugLeverVergoeding");
-
-    const leverKosten =
-        teruglevering * get("terugLeverKosten");
+        importKwh * get("importTarief");
 
 
-    const totaleStroomKosten =
+    /* vastrecht */
+
+    const vastrecht =
+        365 * get("vastrecht");
+
+
+    /* heffingskorting */
+
+    const heffingskorting =
+        365 * get("heffingskorting");
+
+
+    /* energiebelasting */
+
+    const eersteSchijf =
+        Math.min(importKwh,10000);
+
+    const tweedeSchijf =
+        Math.max(0,importKwh - 10000);
+
+    const energiebelasting =
+        eersteSchijf * get("eb1") +
+        tweedeSchijf * get("eb2");
+
+
+    /* transport */
+
+    const transport =
+        365 * get("transport");
+
+
+    /* totaal excl BTW */
+
+    const contractExcl =
         stroomKosten +
-        stroomBelasting -
-        vergoeding +
-        leverKosten;
+        vastrecht +
+        heffingskorting +
+        energiebelasting +
+        transport;
 
 
-    const gas =
-        get("gasVerbruik");
+    /* BTW */
 
-    const gasLevering =
-        gas * get("gasTarief");
+    const contractIncl =
+        contractExcl * btwFactor;
 
-    const gasBelasting =
-        gas * get("energieBelastingGas");
 
-    const gasVastrecht =
-        get("gasVastrecht") * 365;
+    /* terugleververgoeding */
 
-    const totaleGasKosten =
-        gasLevering +
-        gasBelasting +
-        gasVastrecht;
+    const vergoedingExcl =
+        teruglevering * get("terugleverTarief");
 
+    const vergoedingIncl =
+        vergoedingExcl * btwFactor;
+
+
+    /* terugleverkosten */
+
+    const leverKostenExcl =
+        teruglevering * get("terugleverKosten");
+
+    const leverKostenIncl =
+        leverKostenExcl * btwFactor;
+
+
+    /* netto */
 
     const totaal =
-        totaleStroomKosten +
-        totaleGasKosten;
+        contractIncl -
+        vergoedingIncl +
+        leverKostenIncl;
 
 
-    document.getElementById("resultStroom").textContent =
-        euro(totaleStroomKosten);
+    /*
+       RESULTATEN
+    */
 
-    document.getElementById("resultStroomMaand").textContent =
-        euro(totaleStroomKosten / 12) + " per maand";
+    document.getElementById("importKwh").textContent =
+        num(importKwh) + " kWh";
 
-
-    document.getElementById("resultGas").textContent =
-        euro(totaleGasKosten);
-
-    document.getElementById("resultGasMaand").textContent =
-        euro(totaleGasKosten / 12) + " per maand";
+    document.getElementById("exportKwh").textContent =
+        num(teruglevering) + " kWh";
 
 
-    document.getElementById("resultTotaal").textContent =
+    document.getElementById("contractKosten").textContent =
+        euro(contractIncl);
+
+    document.getElementById("contractMaand").textContent =
+        euro(contractIncl / 12) + " per maand";
+
+
+    document.getElementById("vergoeding").textContent =
+        "− " + euro(vergoedingIncl);
+
+
+    document.getElementById("leverKosten").textContent =
+        euro(leverKostenIncl);
+
+
+    document.getElementById("totaal").textContent =
         euro(totaal);
 
-    document.getElementById("resultTotaalMaand").textContent =
+    document.getElementById("totaalMaand").textContent =
         euro(totaal / 12) + " per maand";
 
 
-    document.getElementById("afname").textContent =
-        number(afname) + " kWh";
-
-    document.getElementById("teruglevering").textContent =
-        number(teruglevering) + " kWh";
+    /*
+       UITSPLITSING
+    */
 
     document.getElementById("stroomKosten").textContent =
-        euro(stroomKosten);
+        euro(stroomKosten * btwFactor);
 
-    document.getElementById("stroomBelasting").textContent =
-        euro(stroomBelasting);
+    document.getElementById("vastrechtResult").textContent =
+        euro(vastrecht * btwFactor);
 
-    document.getElementById("vergoeding").textContent =
-        "− " + euro(vergoeding);
+    document.getElementById("heffingResult").textContent =
+        euro(heffingskorting * btwFactor);
 
-    document.getElementById("leverKosten").textContent =
-        euro(leverKosten);
+    document.getElementById("belastingResult").textContent =
+        euro(energiebelasting * btwFactor);
+
+    document.getElementById("transportResult").textContent =
+        euro(transport * btwFactor);
+
+    document.getElementById("btwResult").textContent =
+        euro(contractIncl - contractExcl);
 
 
-    document.getElementById("gasLevering").textContent =
-        euro(gasLevering);
+    /*
+       ZONNEPANELEN
+    */
 
-    document.getElementById("gasBelasting").textContent =
-        euro(gasBelasting);
+    document.getElementById("opwekResult").textContent =
+        num(opwek) + " kWh";
 
-    document.getElementById("gasVasteKosten").textContent =
-        euro(gasVastrecht);
+    document.getElementById("eigenResult").textContent =
+        num(eigenGebruik) + " kWh";
+
+    document.getElementById("terugResult").textContent =
+        num(teruglevering) + " kWh";
+
+
+    const percentage =
+        opwek > 0
+        ? eigenGebruik / opwek * 100
+        : 0;
+
+    document.getElementById("percentageEigen").textContent =
+        percentage.toFixed(1).replace(".",",") + "%";
 }
 
 
 function resetApp() {
 
-    document.getElementById("stroomVerbruik").value = "3575";
-    document.getElementById("zonneOpwek").value = "5580";
-    document.getElementById("zonneEigen").value = "1189";
+    document.getElementById("verbruik").value = "42500";
+    document.getElementById("opwek").value = "15000";
+    document.getElementById("eigenGebruik").value = "9000";
 
-    document.getElementById("stroomTarief").value = "0,30";
-    document.getElementById("terugLeverVergoeding").value = "0,10";
-    document.getElementById("terugLeverKosten").value = "0,15";
-    document.getElementById("energieBelastingStroom").value = "0,11";
+    document.getElementById("importTarief").value = "0,1625";
+    document.getElementById("terugleverTarief").value = "0,08125";
+    document.getElementById("terugleverKosten").value = "0,0778";
+    document.getElementById("btw").value = "21";
 
-    document.getElementById("gasVerbruik").value = "0";
-    document.getElementById("gasTarief").value = "1,20";
-    document.getElementById("gasVastrecht").value = "0,50";
-    document.getElementById("energieBelastingGas").value = "0,60";
+    document.getElementById("vastrecht").value = "0,26138";
+    document.getElementById("heffingskorting").value = "-1,42411";
+    document.getElementById("eb1").value = "0,09161";
+    document.getElementById("eb2").value = "0,06671";
+    document.getElementById("transport").value = "8,4831";
 
     calculate();
 }
@@ -476,12 +597,12 @@ function resetApp() {
 
 document.querySelectorAll("input").forEach(function(input) {
 
-    input.addEventListener("input", calculate);
+    input.addEventListener("input",calculate);
 
 });
 
 
-document.getElementById("resetButton").addEventListener(
+document.getElementById("reset").addEventListener(
     "click",
     resetApp
 );
