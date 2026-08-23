@@ -10,135 +10,147 @@
 <title>Mijn Energie Kosten</title>
 
 <style>
-* { box-sizing:border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
-    margin:0;
-    padding:16px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#f2f2f7;
-    color:#1d1d1f;
+    margin: 0;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f2f2f7;
+    color: #1d1d1f;
 }
 
 .container {
-    max-width:620px;
-    margin:auto;
+    max-width: 620px;
+    margin: auto;
 }
 
 h1 {
-    font-size:28px;
-    margin:8px 0 20px;
+    font-size: 28px;
+    margin: 8px 0 5px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
 }
 
 h2 {
-    font-size:20px;
-    margin:0 0 15px;
+    font-size: 20px;
+    margin: 0 0 15px;
 }
 
 .section {
-    background:white;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:16px;
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
 }
 
 label {
-    display:block;
-    margin-top:14px;
-    font-size:16px;
-    font-weight:500;
+    display: block;
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 input {
-    width:100%;
-    margin-top:6px;
-    padding:13px;
-    font-size:18px;
-    border:1px solid #d2d2d7;
-    border-radius:12px;
-    background:white;
+    width: 100%;
+    margin-top: 6px;
+    padding: 13px;
+    font-size: 18px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    background: white;
 }
 
 .unit {
-    color:#777;
-    font-size:13px;
-    margin-top:4px;
+    color: #777;
+    font-size: 13px;
+    margin-top: 4px;
 }
 
 .results {
-    display:grid;
-    gap:12px;
+    display: grid;
+    gap: 12px;
 }
 
 .result {
-    background:white;
-    border-radius:18px;
-    padding:18px;
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
 }
 
 .result-title {
-    color:#666;
-    font-size:15px;
+    color: #666;
+    font-size: 15px;
 }
 
 .result-value {
-    font-size:29px;
-    font-weight:700;
-    margin-top:5px;
+    font-size: 29px;
+    font-weight: 700;
+    margin-top: 5px;
 }
 
 .month {
-    color:#666;
-    margin-top:5px;
+    color: #666;
+    margin-top: 5px;
 }
 
 .total {
-    background:#1d1d1f;
-    color:white;
+    background: #1d1d1f;
+    color: white;
 }
 
 .total .result-title,
 .total .month {
-    color:#ccc;
+    color: #ccc;
 }
 
 .detail {
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:10px 0;
-    border-bottom:1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .detail:last-child {
-    border-bottom:none;
+    border-bottom: none;
+}
+
+.highlight {
+    font-weight: 700;
 }
 
 button {
-    width:100%;
-    padding:15px;
-    font-size:17px;
-    border:none;
-    border-radius:14px;
-    background:#007aff;
-    color:white;
-    font-weight:600;
-    margin-top:2px;
-}
-
-.small {
-    color:#777;
-    font-size:13px;
-    margin-top:12px;
-    line-height:1.4;
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    border-radius: 14px;
+    background: #007aff;
+    color: white;
+    font-weight: 600;
+    margin-top: 2px;
 }
 
 .note {
-    background:#eef5ff;
-    border-radius:14px;
-    padding:12px;
-    font-size:14px;
-    margin-bottom:16px;
+    background: #eef5ff;
+    border-radius: 14px;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.small {
+    color: #777;
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.4;
 }
 </style>
 </head>
@@ -149,9 +161,51 @@ button {
 
 <h1>⚡ Mijn Energie Kosten</h1>
 
-<div class="note">
-    Audax contractberekening – bedragen worden automatisch berekend.
+<div class="subtitle">
+    Energiecontract calculator
 </div>
+
+<div class="note">
+    Vul de blauwe invoergegevens van het energiecontract in.
+    De app berekent automatisch import, teruglevering, BTW en de netto energiekosten.
+</div>
+
+
+<!-- CONTRACT -->
+
+<div class="section">
+
+<h2>📋 Contract</h2>
+
+<label>
+Naam contract
+<input id="contractNaam"
+       type="text"
+       value="Audax – contract 2026">
+</label>
+
+<label>
+Contractduur
+<input id="dagen"
+       type="text"
+       inputmode="decimal"
+       value="365">
+<div class="unit">dagen</div>
+</label>
+
+<label>
+BTW
+<input id="btw"
+       type="text"
+       inputmode="decimal"
+       value="21">
+<div class="unit">percentage</div>
+</label>
+
+</div>
+
+
+<!-- VERBRUIK -->
 
 <div class="section">
 
@@ -159,119 +213,144 @@ button {
 
 <label>
 Stroomverbruik
-<input id="verbruik" type="text" inputmode="decimal" value="42500">
+<input id="verbruik"
+       type="text"
+       inputmode="decimal"
+       value="42500">
 <div class="unit">kWh per jaar</div>
 </label>
 
 <label>
 Opwek zonnepanelen
-<input id="opwek" type="text" inputmode="decimal" value="15000">
+<input id="opwek"
+       type="text"
+       inputmode="decimal"
+       value="15000">
 <div class="unit">kWh per jaar</div>
 </label>
 
 <label>
 Eigen gebruik zonnepanelen
-<input id="eigenGebruik" type="text" inputmode="decimal" value="9000">
+<input id="eigenGebruik"
+       type="text"
+       inputmode="decimal"
+       value="9000">
 <div class="unit">kWh per jaar</div>
 </label>
 
 </div>
 
 
+<!-- TARIEVEN -->
+
 <div class="section">
 
-<h2>💶 Contract</h2>
+<h2>💶 Energietarieven</h2>
 
 <label>
 Importtarief
-<input id="importTarief" type="text" inputmode="decimal" value="0,1625">
+<input id="importTarief"
+       type="text"
+       inputmode="decimal"
+       value="0,16250">
 <div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
 Terugleververgoeding
-<input id="terugleverTarief" type="text" inputmode="decimal" value="0,08125">
+<input id="terugleverTarief"
+       type="text"
+       inputmode="decimal"
+       value="0,08125">
 <div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
 Terugleverkosten
-<input id="terugleverKosten" type="text" inputmode="decimal" value="0,0778">
+<input id="terugleverKosten"
+       type="text"
+       inputmode="decimal"
+       value="0,07780">
 <div class="unit">€ per kWh – excl. BTW</div>
-</label>
-
-<label>
-BTW
-<input id="btw" type="text" inputmode="decimal" value="21">
-<div class="unit">percentage</div>
 </label>
 
 </div>
 
 
+<!-- VASTE KOSTEN -->
+
 <div class="section">
 
-<h2>📋 Vaste kosten en belastingen</h2>
+<h2>📋 Vaste kosten & belastingen</h2>
 
 <label>
 Vastrecht
-<input id="vastrecht" type="text" inputmode="decimal" value="0,26138">
+<input id="vastrecht"
+       type="text"
+       inputmode="decimal"
+       value="0,26138">
 <div class="unit">€ per dag – excl. BTW</div>
 </label>
 
 <label>
 Heffingskorting
-<input id="heffingskorting" type="text" inputmode="decimal" value="-1,42411">
+<input id="heffingskorting"
+       type="text"
+       inputmode="decimal"
+       value="-1,42411">
 <div class="unit">€ per dag – excl. BTW</div>
 </label>
 
 <label>
 Energiebelasting t/m 10.000 kWh
-<input id="eb1" type="text" inputmode="decimal" value="0,09161">
+<input id="eb1"
+       type="text"
+       inputmode="decimal"
+       value="0,09161">
 <div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
 Energiebelasting 10.001 t/m 50.000 kWh
-<input id="eb2" type="text" inputmode="decimal" value="0,06671">
+<input id="eb2"
+       type="text"
+       inputmode="decimal"
+       value="0,06671">
 <div class="unit">€ per kWh – excl. BTW</div>
 </label>
 
 <label>
 Transportkosten
-<input id="transport" type="text" inputmode="decimal" value="8,4831">
+<input id="transport"
+       type="text"
+       inputmode="decimal"
+       value="8,48310">
 <div class="unit">€ per dag – excl. BTW</div>
 </label>
 
 </div>
 
 
+<!-- HOOFDRESULTATEN -->
+
 <div class="results">
 
 <div class="result">
-<div class="result-title">Afname van het net</div>
-<div class="result-value" id="importKwh">0 kWh</div>
-</div>
-
-<div class="result">
-<div class="result-title">Teruglevering</div>
-<div class="result-value" id="exportKwh">0 kWh</div>
-</div>
-
-<div class="result">
-<div class="result-title">Contractkosten per jaar incl. BTW</div>
+<div class="result-title">Contractkosten incl. BTW</div>
 <div class="result-value" id="contractKosten">€ 0</div>
 <div class="month" id="contractMaand">€ 0 per maand</div>
 </div>
 
 <div class="result">
-<div class="result-title">Terugleververgoeding incl. BTW</div>
+<div class="result-title">Terugleververgoeding</div>
 <div class="result-value" id="vergoeding">€ 0</div>
+<div class="month">per jaar incl. BTW</div>
 </div>
 
 <div class="result">
-<div class="result-title">Terugleverkosten incl. BTW</div>
+<div class="result-title">Terugleverkosten</div>
 <div class="result-value" id="leverKosten">€ 0</div>
+<div class="month">per jaar incl. BTW</div>
 </div>
 
 <div class="result total">
@@ -283,9 +362,45 @@ Transportkosten
 </div>
 
 
+<!-- VERBRUIK RESULTAAT -->
+
 <div class="section">
 
-<h2>📊 Uitsplitsing contractkosten</h2>
+<h2>📊 Verbruiksvolume</h2>
+
+<div class="detail">
+<span>Stroomverbruik</span>
+<strong id="verbruikResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Zonne-opwek</span>
+<strong id="opwekResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Eigen gebruik zonnepanelen</span>
+<strong id="eigenResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Import van net</span>
+<strong id="importResult">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Teruglevering</span>
+<strong id="exportResult">0 kWh</strong>
+</div>
+
+</div>
+
+
+<!-- CONTRACT UITSPLITSING -->
+
+<div class="section">
+
+<h2>📑 Uitsplitsing contractkosten</h2>
 
 <div class="detail">
 <span>Stroomlevering</span>
@@ -317,8 +432,15 @@ Transportkosten
 <strong id="btwResult">€ 0</strong>
 </div>
 
+<div class="detail highlight">
+<span>Contractkosten incl. BTW</span>
+<strong id="contractTotaalResult">€ 0</strong>
 </div>
 
+</div>
+
+
+<!-- ZONNEPANELEN -->
 
 <div class="section">
 
@@ -326,31 +448,33 @@ Transportkosten
 
 <div class="detail">
 <span>Totale opwek</span>
-<strong id="opwekResult">0 kWh</strong>
+<strong id="opwekResult2">0 kWh</strong>
 </div>
 
 <div class="detail">
 <span>Eigen gebruik</span>
-<strong id="eigenResult">0 kWh</strong>
+<strong id="eigenResult2">0 kWh</strong>
 </div>
 
 <div class="detail">
 <span>Teruglevering</span>
-<strong id="terugResult">0 kWh</strong>
+<strong id="terugResult2">0 kWh</strong>
 </div>
 
 <div class="detail">
-<span>Percentage eigen gebruik</span>
+<span>Eigen gebruik van opwek</span>
 <strong id="percentageEigen">0%</strong>
 </div>
 
 </div>
 
 
-<button id="reset">Invoer terugzetten</button>
+<button id="reset">
+Invoer terugzetten
+</button>
 
 <div class="small">
-Alle bedragen uit de contractberekening zijn exclusief BTW ingevoerd en worden daarna met het opgegeven BTW-percentage omgerekend.
+De berekening volgt het gecorrigeerde Excel-model. Alle contracttarieven worden exclusief BTW ingevoerd. De BTW wordt automatisch berekend.
 </div>
 
 </div>
@@ -371,88 +495,92 @@ function get(id) {
 function euro(value) {
 
     return new Intl.NumberFormat("nl-NL", {
-        style:"currency",
-        currency:"EUR"
+        style: "currency",
+        currency: "EUR"
     }).format(value);
 }
 
 
-function num(value) {
+function number(value) {
 
     return new Intl.NumberFormat("nl-NL", {
-        maximumFractionDigits:0
+        maximumFractionDigits: 0
     }).format(value);
 }
 
 
 function calculate() {
 
+    /* INPUT */
+
+    const dagen = get("dagen");
+    const btwPercentage = get("btw") / 100;
+    const btwFactor = 1 + btwPercentage;
+
     const verbruik = get("verbruik");
     const opwek = get("opwek");
 
-    const eigenGebruik = Math.min(
-        get("eigenGebruik"),
-        opwek,
-        verbruik
+    let eigenGebruik = get("eigenGebruik");
+
+    /* beveiliging */
+
+    eigenGebruik = Math.max(
+        0,
+        Math.min(eigenGebruik, opwek, verbruik)
     );
 
-    const teruglevering = Math.max(
-        0,
-        opwek - eigenGebruik
-    );
+
+    /* IMPORT EN EXPORT */
 
     const importKwh = Math.max(
         0,
         verbruik - eigenGebruik
     );
 
-
-    /*
-       AUDAX MODEL
-    */
-
-    const btwPercentage = get("btw") / 100;
-    const btwFactor = 1 + btwPercentage;
+    const exportKwh = Math.max(
+        0,
+        opwek - eigenGebruik
+    );
 
 
-    /* stroom */
+    /* STROOM */
 
     const stroomKosten =
         importKwh * get("importTarief");
 
 
-    /* vastrecht */
+    /* VASTRECHT */
 
     const vastrecht =
-        365 * get("vastrecht");
+        dagen * get("vastrecht");
 
 
-    /* heffingskorting */
+    /* HEFFINGSKORTING */
 
     const heffingskorting =
-        365 * get("heffingskorting");
+        dagen * get("heffingskorting");
 
 
-    /* energiebelasting */
+    /* ENERGIEBELASTING */
 
     const eersteSchijf =
-        Math.min(importKwh,10000);
+        Math.min(importKwh, 10000);
 
     const tweedeSchijf =
-        Math.max(0,importKwh - 10000);
+        Math.max(0, importKwh - 10000);
 
     const energiebelasting =
         eersteSchijf * get("eb1") +
         tweedeSchijf * get("eb2");
 
 
-    /* transport */
+    /* TRANSPORT */
 
     const transport =
-        365 * get("transport");
+        dagen * get("transport");
 
 
-    /* totaal excl BTW */
+    /* CONTRACT EXCLUSIEF BTW */
 
     const contractExcl =
         stroomKosten +
@@ -464,52 +592,50 @@ function calculate() {
 
     /* BTW */
 
+    const btwBedrag =
+        contractExcl * btwPercentage;
+
+
+    /* CONTRACT INCLUSIEF BTW */
+
     const contractIncl =
-        contractExcl * btwFactor;
+        contractExcl + btwBedrag;
 
 
-    /* terugleververgoeding */
+    /* TERUGLEVERING */
 
     const vergoedingExcl =
-        teruglevering * get("terugleverTarief");
+        exportKwh * get("terugleverTarief");
 
     const vergoedingIncl =
         vergoedingExcl * btwFactor;
 
 
-    /* terugleverkosten */
+    /* TERUGLEVERKOSTEN */
 
     const leverKostenExcl =
-        teruglevering * get("terugleverKosten");
+        exportKwh * get("terugleverKosten");
 
     const leverKostenIncl =
         leverKostenExcl * btwFactor;
 
 
-    /* netto */
+    /* NETTO */
 
-    const totaal =
+    const netto =
         contractIncl -
         vergoedingIncl +
         leverKostenIncl;
 
 
-    /*
-       RESULTATEN
-    */
-
-    document.getElementById("importKwh").textContent =
-        num(importKwh) + " kWh";
-
-    document.getElementById("exportKwh").textContent =
-        num(teruglevering) + " kWh";
-
+    /* HOOFDRESULTATEN */
 
     document.getElementById("contractKosten").textContent =
         euro(contractIncl);
 
     document.getElementById("contractMaand").textContent =
-        euro(contractIncl / 12) + " per maand";
+        euro(contractIncl / 12) +
+        " per maand";
 
 
     document.getElementById("vergoeding").textContent =
@@ -517,19 +643,36 @@ function calculate() {
 
 
     document.getElementById("leverKosten").textContent =
-        euro(leverKostenIncl);
+        "+ " + euro(leverKostenIncl);
 
 
     document.getElementById("totaal").textContent =
-        euro(totaal);
+        euro(netto);
 
     document.getElementById("totaalMaand").textContent =
-        euro(totaal / 12) + " per maand";
+        euro(netto / 12) +
+        " per maand";
 
 
-    /*
-       UITSPLITSING
-    */
+    /* VERBRUIK */
+
+    document.getElementById("verbruikResult").textContent =
+        number(verbruik) + " kWh";
+
+    document.getElementById("opwekResult").textContent =
+        number(opwek) + " kWh";
+
+    document.getElementById("eigenResult").textContent =
+        number(eigenGebruik) + " kWh";
+
+    document.getElementById("importResult").textContent =
+        number(importKwh) + " kWh";
+
+    document.getElementById("exportResult").textContent =
+        number(exportKwh) + " kWh";
+
+
+    /* UITSPLITSING */
 
     document.getElementById("stroomKosten").textContent =
         euro(stroomKosten * btwFactor);
@@ -547,57 +690,90 @@ function calculate() {
         euro(transport * btwFactor);
 
     document.getElementById("btwResult").textContent =
-        euro(contractIncl - contractExcl);
+        euro(btwBedrag);
+
+    document.getElementById("contractTotaalResult").textContent =
+        euro(contractIncl);
 
 
-    /*
-       ZONNEPANELEN
-    */
+    /* ZONNEPANELEN */
 
-    document.getElementById("opwekResult").textContent =
-        num(opwek) + " kWh";
+    document.getElementById("opwekResult2").textContent =
+        number(opwek) + " kWh";
 
-    document.getElementById("eigenResult").textContent =
-        num(eigenGebruik) + " kWh";
+    document.getElementById("eigenResult2").textContent =
+        number(eigenGebruik) + " kWh";
 
-    document.getElementById("terugResult").textContent =
-        num(teruglevering) + " kWh";
+    document.getElementById("terugResult2").textContent =
+        number(exportKwh) + " kWh";
 
 
-    const percentage =
+    const percentageEigen =
         opwek > 0
         ? eigenGebruik / opwek * 100
         : 0;
 
     document.getElementById("percentageEigen").textContent =
-        percentage.toFixed(1).replace(".",",") + "%";
+        percentageEigen.toFixed(1).replace(".", ",") +
+        "%";
 }
 
 
+/* RESET */
+
 function resetApp() {
 
-    document.getElementById("verbruik").value = "42500";
-    document.getElementById("opwek").value = "15000";
-    document.getElementById("eigenGebruik").value = "9000";
+    document.getElementById("contractNaam").value =
+        "Audax – contract 2026";
 
-    document.getElementById("importTarief").value = "0,1625";
-    document.getElementById("terugleverTarief").value = "0,08125";
-    document.getElementById("terugleverKosten").value = "0,0778";
-    document.getElementById("btw").value = "21";
+    document.getElementById("dagen").value =
+        "365";
 
-    document.getElementById("vastrecht").value = "0,26138";
-    document.getElementById("heffingskorting").value = "-1,42411";
-    document.getElementById("eb1").value = "0,09161";
-    document.getElementById("eb2").value = "0,06671";
-    document.getElementById("transport").value = "8,4831";
+    document.getElementById("btw").value =
+        "21";
+
+    document.getElementById("verbruik").value =
+        "42500";
+
+    document.getElementById("opwek").value =
+        "15000";
+
+    document.getElementById("eigenGebruik").value =
+        "9000";
+
+    document.getElementById("importTarief").value =
+        "0,16250";
+
+    document.getElementById("terugleverTarief").value =
+        "0,08125";
+
+    document.getElementById("terugleverKosten").value =
+        "0,07780";
+
+    document.getElementById("vastrecht").value =
+        "0,26138";
+
+    document.getElementById("heffingskorting").value =
+        "-1,42411";
+
+    document.getElementById("eb1").value =
+        "0,09161";
+
+    document.getElementById("eb2").value =
+        "0,06671";
+
+    document.getElementById("transport").value =
+        "8,48310";
 
     calculate();
 }
 
 
+/* AUTOMATISCH BEREKENEN */
+
 document.querySelectorAll("input").forEach(function(input) {
 
-    input.addEventListener("input",calculate);
+    input.addEventListener("input", calculate);
 
 });
 
@@ -607,6 +783,8 @@ document.getElementById("reset").addEventListener(
     resetApp
 );
 
+
+/* START */
 
 calculate();
 
