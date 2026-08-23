@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Energiekosten">
+
+<title>Mijn Energie Kosten</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f2f2f7;
+    color: #1d1d1f;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 8px 0 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0 0 15px;
+}
+
+.section,
+.result {
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    margin-top: 6px;
+    padding: 13px;
+    font-size: 18px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    background: white;
+}
+
+.unit {
+    color: #777;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.results {
+    display: grid;
+    gap: 12px;
+}
+
+.result-title {
+    font-size: 15px;
+    color: #666;
+}
+
+.result-value {
+    font-size: 29px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.month {
+    margin-top: 5px;
+    color: #666;
+}
+
+.total {
+    background: #1d1d1f;
+    color: white;
+}
+
+.total .result-title,
+.total .month {
+    color: #ccc;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail:last-child {
+    border-bottom: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    border-radius: 14px;
+    background: #007aff;
+    color: white;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.small {
+    color: #777;
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚡ Mijn Energie Kosten</h1>
+
+<div class="section">
+
+<h2>Elektriciteit</h2>
+
+<label>
+Verbruik stroom
+<input id="stroomVerbruik" type="text" inputmode="decimal" value="3575">
+<div class="unit">kWh per jaar</div>
+</label>
+
+<label>
+Opwek zonnepanelen
+<input id="zonneOpwek" type="text" inputmode="decimal" value="5580">
+<div class="unit">kWh per jaar</div>
+</label>
+
+<label>
+Eigen gebruik zonnepanelen
+<input id="zonneEigen" type="text" inputmode="decimal" value="1189">
+<div class="unit">kWh per jaar</div>
+</label>
+
+<label>
+Stroomtarief
+<input id="stroomTarief" type="text" inputmode="decimal" value="0,30">
+<div class="unit">€ per kWh</div>
+</label>
+
+<label>
+Terugleververgoeding
+<input id="terugLeverVergoeding" type="text" inputmode="decimal" value="0,10">
+<div class="unit">€ per kWh</div>
+</label>
+
+<label>
+Terugleverkosten
+<input id="terugLeverKosten" type="text" inputmode="decimal" value="0,15">
+<div class="unit">€ per kWh</div>
+</label>
+
+<label>
+Energiebelasting stroom
+<input id="energieBelastingStroom" type="text" inputmode="decimal" value="0,11">
+<div class="unit">€ per kWh</div>
+</label>
+
+</div>
+
+
+<div class="section">
+
+<h2>Gas</h2>
+
+<label>
+Gasverbruik
+<input id="gasVerbruik" type="text" inputmode="decimal" value="0">
+<div class="unit">m³ per jaar</div>
+</label>
+
+<label>
+Gastarief
+<input id="gasTarief" type="text" inputmode="decimal" value="1,20">
+<div class="unit">€ per m³</div>
+</label>
+
+<label>
+Vastrecht gas
+<input id="gasVastrecht" type="text" inputmode="decimal" value="0,50">
+<div class="unit">€ per dag</div>
+</label>
+
+<label>
+Energiebelasting gas
+<input id="energieBelastingGas" type="text" inputmode="decimal" value="0,60">
+<div class="unit">€ per m³</div>
+</label>
+
+</div>
+
+
+<div class="results">
+
+<div class="result">
+<div class="result-title">Elektriciteit per jaar</div>
+<div class="result-value" id="resultStroom">€ 0</div>
+<div class="month" id="resultStroomMaand">€ 0 per maand</div>
+</div>
+
+<div class="result">
+<div class="result-title">Gas per jaar</div>
+<div class="result-value" id="resultGas">€ 0</div>
+<div class="month" id="resultGasMaand">€ 0 per maand</div>
+</div>
+
+<div class="result total">
+<div class="result-title">Totale energiekosten</div>
+<div class="result-value" id="resultTotaal">€ 0</div>
+<div class="month" id="resultTotaalMaand">€ 0 per maand</div>
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Uitsplitsing stroom</h2>
+
+<div class="detail">
+<span>Afname van net</span>
+<strong id="afname">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Teruglevering</span>
+<strong id="teruglevering">0 kWh</strong>
+</div>
+
+<div class="detail">
+<span>Stroomkosten</span>
+<strong id="stroomKosten">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Energiebelasting</span>
+<strong id="stroomBelasting">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Terugleververgoeding</span>
+<strong id="vergoeding">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Terugleverkosten</span>
+<strong id="leverKosten">€ 0</strong>
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Uitsplitsing gas</h2>
+
+<div class="detail">
+<span>Gaslevering</span>
+<strong id="gasLevering">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Energiebelasting</span>
+<strong id="gasBelasting">€ 0</strong>
+</div>
+
+<div class="detail">
+<span>Vastrecht</span>
+<strong id="gasVasteKosten">€ 0</strong>
+</div>
+
+</div>
+
+
+<button id="resetButton">Invoer terugzetten</button>
+
+<div class="small">
+De berekening gebeurt volledig op het apparaat.
+</div>
+
+</div>
+
+
+<script>
+
+function get(id) {
+
+    let value = document.getElementById(id).value;
+
+    value = value.replace(",", ".");
+
+    return Number(value) || 0;
+}
+
+
+function euro(value) {
+
+    return new Intl.NumberFormat("nl-NL", {
+        style: "currency",
+        currency: "EUR"
+    }).format(value);
+}
+
+
+function number(value) {
+
+    return new Intl.NumberFormat("nl-NL", {
+        maximumFractionDigits: 0
+    }).format(value);
+}
+
+
+function calculate() {
+
+    const verbruik = get("stroomVerbruik");
+    const opwek = get("zonneOpwek");
+
+    const eigen = Math.min(
+        get("zonneEigen"),
+        verbruik,
+        opwek
+    );
+
+    const afname = Math.max(
+        0,
+        verbruik - eigen
+    );
+
+    const teruglevering = Math.max(
+        0,
+        opwek - eigen
+    );
+
+
+    const stroomKosten =
+        afname * get("stroomTarief");
+
+    const stroomBelasting =
+        afname * get("energieBelastingStroom");
+
+    const vergoeding =
+        teruglevering * get("terugLeverVergoeding");
+
+    const leverKosten =
+        teruglevering * get("terugLeverKosten");
+
+
+    const totaleStroomKosten =
+        stroomKosten +
+        stroomBelasting -
+        vergoeding +
+        leverKosten;
+
+
+    const gas =
+        get("gasVerbruik");
+
+    const gasLevering =
+        gas * get("gasTarief");
+
+    const gasBelasting =
+        gas * get("energieBelastingGas");
+
+    const gasVastrecht =
+        get("gasVastrecht") * 365;
+
+    const totaleGasKosten =
+        gasLevering +
+        gasBelasting +
+        gasVastrecht;
+
+
+    const totaal =
+        totaleStroomKosten +
+        totaleGasKosten;
+
+
+    document.getElementById("resultStroom").textContent =
+        euro(totaleStroomKosten);
+
+    document.getElementById("resultStroomMaand").textContent =
+        euro(totaleStroomKosten / 12) + " per maand";
+
+
+    document.getElementById("resultGas").textContent =
+        euro(totaleGasKosten);
+
+    document.getElementById("resultGasMaand").textContent =
+        euro(totaleGasKosten / 12) + " per maand";
+
+
+    document.getElementById("resultTotaal").textContent =
+        euro(totaal);
+
+    document.getElementById("resultTotaalMaand").textContent =
+        euro(totaal / 12) + " per maand";
+
+
+    document.getElementById("afname").textContent =
+        number(afname) + " kWh";
+
+    document.getElementById("teruglevering").textContent =
+        number(teruglevering) + " kWh";
+
+    document.getElementById("stroomKosten").textContent =
+        euro(stroomKosten);
+
+    document.getElementById("stroomBelasting").textContent =
+        euro(stroomBelasting);
+
+    document.getElementById("vergoeding").textContent =
+        "− " + euro(vergoeding);
+
+    document.getElementById("leverKosten").textContent =
+        euro(leverKosten);
+
+
+    document.getElementById("gasLevering").textContent =
+        euro(gasLevering);
+
+    document.getElementById("gasBelasting").textContent =
+        euro(gasBelasting);
+
+    document.getElementById("gasVasteKosten").textContent =
+        euro(gasVastrecht);
+}
+
+
+function resetApp() {
+
+    document.getElementById("stroomVerbruik").value = "3575";
+    document.getElementById("zonneOpwek").value = "5580";
+    document.getElementById("zonneEigen").value = "1189";
+
+    document.getElementById("stroomTarief").value = "0,30";
+    document.getElementById("terugLeverVergoeding").value = "0,10";
+    document.getElementById("terugLeverKosten").value = "0,15";
+    document.getElementById("energieBelastingStroom").value = "0,11";
+
+    document.getElementById("gasVerbruik").value = "0";
+    document.getElementById("gasTarief").value = "1,20";
+    document.getElementById("gasVastrecht").value = "0,50";
+    document.getElementById("energieBelastingGas").value = "0,60";
+
+    calculate();
+}
+
+
+document.querySelectorAll("input").forEach(function(input) {
+
+    input.addEventListener("input", calculate);
+
+});
+
+
+document.getElementById("resetButton").addEventListener(
+    "click",
+    resetApp
+);
+
+
+calculate();
+
+</script>
+
+</body>
+</html>
